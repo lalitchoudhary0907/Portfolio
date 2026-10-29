@@ -1,26 +1,289 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   LALIT CHOUDHARY — PORTFOLIO DESIGN SYSTEM
+   Theme: Obsidian & Charcoal with Subtle Crimson Accents & Gold Highlights
+   Aesthetic: Independent Developer & Quantitative Research Studio
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  /* Surfaces & Backgrounds */
+  --bg-canvas: #070709;
+  --bg-surface: #0e0e12;
+  --bg-card: #131318;
+  --bg-card-hover: #191921;
+  --bg-elevated: #1e1e27;
+  --bg-backdrop: rgba(7, 7, 9, 0.85);
+
+  /* Crimson Accents */
+  --crimson-500: #e11d48;
+  --crimson-600: #dc2626;
+  --crimson-800: #991b1b;
+  --crimson-900: #450a0a;
+  --crimson-glow: rgba(220, 38, 38, 0.16);
+  --crimson-border: rgba(220, 38, 38, 0.32);
+  --crimson-subtle: rgba(220, 38, 38, 0.08);
+
+  /* Warm Gold Accents (WorldQuant BRAIN Gold / Quantitative Accolades) */
+  --gold-400: #facc15;
+  --gold-500: #d4af37;
+  --gold-600: #ca8a04;
+  --gold-glow: rgba(212, 175, 55, 0.18);
+  --gold-border: rgba(212, 175, 55, 0.35);
+  --gold-subtle: rgba(212, 175, 55, 0.08);
+
+  /* Typography Colors */
+  --text-pure: #ffffff;
+  --text-primary: #f4f4f7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --text-faint: #3f3f46;
+
+  /* Borders & Dividers */
+  --border-ultra-subtle: rgba(255, 255, 255, 0.04);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-active: rgba(255, 255, 255, 0.28);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms var(--ease-spring);
+  --transition-normal: 250ms var(--ease-spring);
+  --transition-slow: 400ms var(--ease-spring);
+
+  /* Scrollbar & native controls */
+  scrollbar-color: #272730 #0a0a0d;
+  scrollbar-width: thin;
+  accent-color: var(--crimson-600);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle background grid inspired by coordinate axes & financial charts */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Subtle ambient crimson and warm glow in background */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 15%;
+  width: 50vw;
+  height: 50vh;
+  background: radial-gradient(circle, rgba(220, 38, 38, 0.04) 0%, rgba(212, 175, 55, 0.02) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(80px);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--crimson-600);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  z-index: 1000;
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 2px solid #fff;
+}
+
+/* Base Headings & Links */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-pure);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+:focus-visible {
+  outline: 2px solid var(--crimson-500);
+  outline-offset: 3px;
+}
+
+/* Layout Utilities */
+.container-custom {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.section-custom {
+  padding-block: 5rem;
+  position: relative;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--crimson-500);
+  margin-bottom: 0.5rem;
+}
+
+.section-label::before {
+  content: '//';
+  opacity: 0.6;
+}
+
+.section-title {
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.section-desc {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Button System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.6rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--crimson-600);
+  color: #ffffff;
+  box-shadow: 0 4px 18px var(--crimson-glow);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(220, 38, 38, 0.35);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-active);
+  color: var(--text-pure);
+  transform: translateY(-2px);
+}
+
+.btn-gold {
+  background: var(--gold-subtle);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-400);
+}
+
+.btn-gold:hover {
+  background: var(--gold-500);
+  color: #000;
+  box-shadow: 0 4px 18px var(--gold-glow);
+}
+
+/* Indicator Pulse Animation */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2.5s infinite;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-pulse-dot {
+    animation: none !important;
+  }
 }

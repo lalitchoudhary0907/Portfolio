@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lalit Choudhary — Personal Portfolio
 
-## Getting Started
+A polished, responsive personal portfolio for **Lalit Choudhary**, first-year B.Tech Computer Science and Artificial Intelligence student exploring software engineering, intelligent systems, and quantitative finance.
 
-First, run the development server:
+## 🚀 Stack & Technologies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework:** Next.js 16 (App Router with Turbopack)
+- **Library:** React 19 + TypeScript
+- **Styling:** Tailwind CSS v4 + Obsidian & Crimson custom design system
+- **Typography:** Plus Jakarta Sans (Headings/Body) & JetBrains Mono (Code/Math notation)
+- **Backend:** Next.js Route Handler (`/api/contact`) with validation & honeypot spam protection
+
+---
+
+## 📁 Project Structure
+
+```text
+Portfolio/
+├── src/
+│   ├── app/
+│   │   ├── api/contact/route.ts  # Backend Route Handler for contact messages
+│   │   ├── globals.css           # Design system tokens, grid backgrounds, animations
+│   │   ├── layout.tsx            # Root layout with fonts and metadata
+│   │   └── page.tsx              # Assembles all portfolio sections
+│   ├── components/
+│   │   ├── Navbar.tsx            # Navigation with scroll spy & mobile drawer
+│   │   ├── Hero.tsx              # Text-led hero with quantitative SVG signal graph
+│   │   ├── About.tsx             # Academic profile & 4 core pillars
+│   │   ├── Projects.tsx          # CoreAlert, Quantitative Alpha Research & Roadmap
+│   │   ├── Skills.tsx            # Honest competency categories
+│   │   ├── Achievements.tsx      # WorldQuant BRAIN Gold showcase
+│   │   ├── Journey.tsx           # 5-step ongoing learning trajectory
+│   │   ├── BeyondCode.tsx        # Music, singing & acoustic guitar balance
+│   │   ├── Contact.tsx           # Contact form (API connected) & email copy
+│   │   ├── Footer.tsx            # Dynamic year, sign-off & back-to-top
+│   │   ├── CertificateModal.tsx  # Accessible recognition document viewer
+│   │   ├── Toast.tsx             # Action notifications
+│   │   └── icons/BrandIcons.tsx  # Custom SVG GitHub & LinkedIn icons
+│   └── data/
+│       └── portfolioData.ts      # Single source of truth for personal info & projects
+├── public/                       # Static public assets
+├── legacy-backup/                # Preserved static HTML & CSS implementation
+├── package.json
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Development & Running Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Start Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the live site.
 
-## Learn More
+### Build for Production
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Start Production Server
+```bash
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✏️ How to Update Your Content
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All personal information, project descriptions, skills, and links can be updated in a single file:
+👉 **[`src/data/portfolioData.ts`](src/data/portfolioData.ts)**
